@@ -1,0 +1,2342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Charte Graphique — ENEOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="templates-styles.css">
+
+<style>
+  :root{
+    /* Direction CONSERVATRICE (par défaut) — fidèle aux slides existantes */
+    --cv-navy-900: #0F2A5C;          /* bleu marine logo */
+    --cv-navy-800: #143A7D;
+    --cv-navy-700: #1B4FA6;
+    --cv-blue-500: #2A6FD6;
+    --cv-cyan-500: #2BC4C4;          /* turquoise bandeau */
+    --cv-cyan-400: #4FD8D8;
+    --cv-sky-100:  #E8F1FB;
+    --cv-sky-50:   #F4F8FD;
+
+    --sem-success: #2BB673;
+    --sem-warning: #F39C12;
+    --sem-danger:  #E54848;
+    --sem-info:    #2A6FD6;
+    --sem-neutral: #8C97A8;
+
+    --ink-900: #0F1B33;
+    --ink-700: #2C3A52;
+    --ink-500: #5A6679;
+    --ink-300: #A6AEBE;
+    --ink-100: #E5E8EE;
+    --paper:   #FFFFFF;
+    --paper-2: #F7F9FC;
+
+    /* Espacements */
+    --r-sm: 6px;
+    --r:    12px;
+    --r-lg: 20px;
+    --shadow-card: 0 1px 2px rgba(15,27,51,.04), 0 8px 24px rgba(15,27,51,.06);
+
+    /* Tweakable knobs (overridden by JS via inline style on :root) */
+    --tw-radius-mult: 1;          /* Surface: flat=0, soft=1, glassy=1.4 */
+    --tw-shadow-strength: 1;      /* Surface: flat=0, soft=1, glassy=1.6 */
+    --tw-border-strength: 1;      /* Surface: flat=1.4, soft=1, glassy=.4 */
+    --tw-surface-fill: var(--paper);  /* Surface: glassy → translucent */
+    --tw-surface-blur: 0px;
+    --tw-density-pad: 1;          /* Mood: editorial=1.3, corporate=1, tech=.8 */
+    --tw-display-weight: 800;     /* Mood: editorial=300, corporate=700, tech=800 */
+    --tw-display-track: -.02em;   /* Mood: editorial=-.04em, tech=-.025em, corporate=-.015em */
+    --tw-eyebrow-track: .14em;    /* Mood: tech=.22em widely spaced */
+    --tw-cyan-h: 178;             /* Accent hue base */
+    --tw-cyan-c: 0.10;             /* Accent chroma — drives intensity */
+    --tw-cyan-l: 0.69;             /* Accent lightness */
+  }
+
+  /* Direction MODERNE — overrides quand body a la classe .dir-modern */
+  body.dir-modern{
+    --cv-navy-900: #0B1F3A;
+    --cv-navy-800: #122B52;
+    --cv-navy-700: #1A3D78;
+    --cv-blue-500: #3563E9;
+    --cv-cyan-500: #14B8A6;     /* teal plus saturé */
+    --cv-cyan-400: #2DD4BF;
+    --cv-sky-100:  #ECF1F7;
+    --cv-sky-50:   #F8FAFC;
+
+    --sem-success: #16A34A;
+    --sem-warning: #EA580C;
+    --sem-danger:  #DC2626;
+    --sem-info:    #3563E9;
+    --sem-neutral: #64748B;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink-900);
+    background: var(--paper-2);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ───────── Layout principal ───────── */
+  .layout{
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+  }
+  aside.nav{
+    position: sticky; top: 0;
+    height: 100vh;
+    background: var(--paper);
+    border-right: 1px solid var(--ink-100);
+    padding: 28px 22px;
+    overflow-y: auto;
+  }
+  aside.nav .brand{
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--ink-100);
+  }
+  aside.nav .brand img{ height: 28px; width: auto; }
+  aside.nav .brand .meta{
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-500);
+    line-height: 1.3;
+  }
+  aside.nav .brand .meta strong{ color: var(--cv-navy-900); display:block; letter-spacing: .04em;}
+
+  .nav-group{ margin-bottom: 20px; }
+  .nav-group-title{
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-500); font-weight: 600;
+    padding: 0 10px 6px;
+  }
+  .nav a{
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--ink-700);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: background .15s, color .15s;
+  }
+  .nav a:hover{ background: var(--cv-sky-50); color: var(--cv-navy-800); }
+  .nav a.active{ background: var(--cv-sky-100); color: var(--cv-navy-900); }
+  .nav a .num{
+    width: 22px; height: 22px; border-radius: 6px;
+    display: grid; place-items: center;
+    font-size: 11px; font-weight: 600;
+    background: var(--paper-2); color: var(--ink-500);
+    flex-shrink: 0;
+  }
+  .nav a.active .num{ background: var(--cv-navy-900); color: white; }
+
+  main{ padding: 0; min-width: 0; }
+
+  /* ───────── Bannière de direction ───────── */
+  .direction-banner{
+    position: sticky; top: 0; z-index: 5;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink-100);
+    padding: 14px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .direction-banner .label{
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-500); font-weight: 600;
+  }
+  .direction-banner h1{
+    margin: 2px 0 0;
+    font-size: 16px; font-weight: 600; color: var(--cv-navy-900);
+  }
+  .dir-toggle{
+    display: inline-flex;
+    background: var(--paper-2);
+    border-radius: 999px;
+    padding: 4px;
+    border: 1px solid var(--ink-100);
+  }
+  .dir-toggle button{
+    border: 0; background: transparent;
+    padding: 7px 16px;
+    font: inherit; font-size: 12.5px; font-weight: 600;
+    color: var(--ink-500);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .dir-toggle button.on{
+    background: var(--cv-navy-900);
+    color: white;
+    box-shadow: 0 2px 6px rgba(15,42,92,.25);
+  }
+
+  /* ───────── Sections ───────── */
+  section.sec{
+    padding: 64px 48px;
+    border-bottom: 1px solid var(--ink-100);
+    max-width: 1280px;
+  }
+  .sec-eyebrow{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--cv-cyan-500); font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .sec-eyebrow::before{
+    content:""; width: 24px; height: 2px; background: currentColor; display: inline-block;
+  }
+  .sec h2{
+    font-size: 38px; font-weight: 700;
+    color: var(--cv-navy-900);
+    margin: 0 0 14px;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+  }
+  .sec .lede{
+    font-size: 16px; color: var(--ink-500);
+    max-width: 720px; margin: 0 0 36px;
+    line-height: 1.6;
+  }
+
+  /* ───────── Page de couverture ───────── */
+  .cover{
+    padding: 0; max-width: none;
+    border-bottom: 1px solid var(--ink-100);
+  }
+  .cover-inner{
+    position: relative;
+    padding: 96px 48px 80px;
+    background:
+      radial-gradient(1200px 400px at 110% -20%, rgba(43,196,196,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 120%, rgba(15,42,92,.10), transparent 60%),
+      linear-gradient(180deg, #fff 0%, #fff 60%, var(--cv-sky-50) 100%);
+    overflow: hidden;
+  }
+  .cover-inner::before{
+    /* points décoratifs */
+    content:""; position: absolute; top: 60px; right: 60px;
+    width: 180px; height: 80px;
+    background-image: radial-gradient(var(--cv-cyan-400) 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
+    opacity: .4;
+  }
+  .cover-inner::after{
+    /* vague diagonale en bas */
+    content:""; position: absolute; bottom: -40px; left: -40px;
+    width: 280px; height: 80px;
+    background: linear-gradient(90deg, transparent, var(--cv-cyan-400) 50%, transparent);
+    transform: rotate(-15deg);
+    opacity: .15;
+    border-radius: 50%;
+  }
+  .cover-inner > *{ position: relative; }
+  .cover-tag{
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cv-cyan-500);
+    margin-bottom: 18px;
+  }
+  .cover-title{
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--cv-navy-900);
+    line-height: .95;
+    letter-spacing: -.02em;
+    margin: 0 0 18px;
+    max-width: 900px;
+  }
+  .cover-title em{
+    font-style: normal;
+    background: linear-gradient(90deg, var(--cv-cyan-500), var(--cv-blue-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .cover-sub{
+    font-size: 19px; color: var(--ink-500);
+    max-width: 620px;
+    margin-bottom: 36px;
+    line-height: 1.55;
+  }
+  .cover-meta{
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--ink-100);
+    max-width: 720px;
+  }
+  .cover-meta div{ font-size: 12px; }
+  .cover-meta dt{
+    color: var(--ink-500);
+    text-transform: uppercase; letter-spacing: .1em;
+    font-size: 10.5px; font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .cover-meta dd{
+    margin: 0;
+    color: var(--cv-navy-900); font-weight: 600; font-size: 14px;
+  }
+
+  /* ───────── Logo section ───────── */
+  .logo-grid{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .logo-card{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 56px 32px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 240px;
+    position: relative;
+    box-shadow: var(--shadow-card);
+  }
+  .logo-card img{ max-width: 70%; height: auto; }
+  .logo-card.on-navy{ background: var(--cv-navy-900); }
+  .logo-card.on-navy img{ filter: brightness(0) invert(1); }
+  .logo-card.on-cyan{
+    background: linear-gradient(135deg, var(--cv-navy-900), var(--cv-cyan-500));
+  }
+  .logo-card.on-cyan img{ filter: brightness(0) invert(1); }
+  .logo-card .label{
+    position: absolute; top: 14px; left: 16px;
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+  .logo-card.on-navy .label, .logo-card.on-cyan .label{ color: rgba(255,255,255,.7); }
+
+  .logo-rules{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .rule{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+  .rule h4{
+    margin: 0 0 8px; font-size: 13px; font-weight: 700;
+    color: var(--cv-navy-900);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .rule h4 .ic{
+    width: 22px; height: 22px; border-radius: 6px;
+    background: var(--cv-sky-100); color: var(--cv-navy-800);
+    display: grid; place-items: center;
+    font-size: 12px; font-weight: 700;
+  }
+  .rule h4.no .ic{ background: #FCEAEA; color: var(--sem-danger); }
+  .rule h4.yes .ic{ background: #E6F6EE; color: var(--sem-success); }
+  .rule p{ margin: 0; font-size: 13px; color: var(--ink-500); line-height: 1.5; }
+
+  /* ───────── Couleurs ───────── */
+  .palette-block{ margin-bottom: 36px; }
+  .palette-block h3{
+    margin: 0 0 16px;
+    font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-700); font-weight: 700;
+  }
+  .swatches{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+  }
+  .swatch{
+    border-radius: var(--r);
+    overflow: hidden;
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    box-shadow: var(--shadow-card);
+  }
+  .swatch .chip{
+    height: 110px;
+    position: relative;
+    display: flex; align-items: flex-end; padding: 12px;
+  }
+  .swatch .chip .ratio{
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(255,255,255,.9); color: var(--ink-900);
+    font-size: 10px; font-weight: 700;
+    padding: 3px 7px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .swatch .info{
+    padding: 12px 14px;
+    border-top: 1px solid var(--ink-100);
+  }
+  .swatch .info .name{
+    font-size: 13px; font-weight: 700; color: var(--cv-navy-900);
+    margin-bottom: 2px;
+  }
+  .swatch .info .role{
+    font-size: 11px; color: var(--ink-500);
+    margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+  .swatch .info code{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-700);
+    display: block;
+    line-height: 1.6;
+  }
+
+  /* Comparaison directions */
+  .dir-compare{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 36px;
+  }
+  .dir-card{
+    border-radius: var(--r-lg);
+    padding: 28px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+  }
+  .dir-card.cv-dir{
+    background: linear-gradient(135deg, #0F2A5C 0%, #143A7D 50%, #2BC4C4 100%);
+  }
+  .dir-card.md-dir{
+    background: linear-gradient(135deg, #0B1F3A 0%, #1A3D78 50%, #14B8A6 100%);
+  }
+  .dir-card .tag{
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; opacity: .85;
+    margin-bottom: 8px;
+  }
+  .dir-card h4{
+    font-size: 28px; font-weight: 700;
+    margin: 0 0 8px; letter-spacing: -.01em;
+  }
+  .dir-card p{ font-size: 13.5px; opacity: .9; margin: 0; line-height: 1.55; max-width: 320px;}
+  .dir-card .swatches-mini{
+    position: absolute; top: 24px; right: 24px;
+    display: flex; gap: 6px;
+  }
+  .dir-card .swatches-mini span{
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.3);
+  }
+
+  /* ───────── Typographie ───────── */
+  .typo-hero{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r-lg);
+    padding: 48px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+  }
+  .typo-hero .name{
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--cv-cyan-500); font-weight: 700;
+  }
+  .typo-hero .display{
+    font-size: 110px; font-weight: 800;
+    color: var(--cv-navy-900);
+    line-height: .95; letter-spacing: -.025em;
+    margin: 12px 0;
+  }
+  .typo-hero .alphabet{
+    font-size: 22px; font-weight: 500; color: var(--ink-700);
+    border-top: 1px solid var(--ink-100);
+    padding-top: 18px;
+    line-height: 1.4;
+  }
+  .typo-hero .alphabet span{ color: var(--ink-300); }
+
+  .weights{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .weight{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 18px;
+  }
+  .weight .sample{
+    font-size: 32px; color: var(--cv-navy-900);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .weight .meta{
+    font-size: 11px; color: var(--ink-500);
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+
+  .scale-table{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+  .scale-row{
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    gap: 24px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--ink-100);
+    align-items: baseline;
+  }
+  .scale-row:last-child{ border-bottom: 0; }
+  .scale-row .tag{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-500);
+    text-transform: uppercase; letter-spacing: .06em;
+    padding-top: 8px;
+  }
+  .scale-row .specimen{ color: var(--cv-navy-900); }
+  .scale-row .specs{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink-500);
+    line-height: 1.6; text-align: right;
+  }
+
+  /* ───────── Iconographie ───────── */
+  .icon-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .icon-cell{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 22px 12px 16px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    text-align: center;
+  }
+  .icon-cell svg{
+    width: 32px; height: 32px;
+    color: var(--cv-cyan-500);
+    stroke-width: 1.6;
+  }
+  .icon-cell .name{
+    font-size: 11.5px; color: var(--ink-700); font-weight: 500;
+  }
+  .icon-rules-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  }
+
+  /* ───────── Composants UI ───────── */
+  .comp-section{ margin-bottom: 40px; }
+  .comp-section h3{
+    margin: 0 0 14px;
+    font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-700); font-weight: 700;
+  }
+  .comp-row{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 28px;
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    box-shadow: var(--shadow-card);
+  }
+  .btn{
+    font: inherit; font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    font-size: 13.5px;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .15s;
+  }
+  .btn-primary{
+    background: var(--cv-navy-900); color: white;
+  }
+  .btn-primary:hover{ background: var(--cv-navy-800); }
+  .btn-cyan{
+    background: var(--cv-cyan-500); color: white;
+  }
+  .btn-secondary{
+    background: var(--cv-sky-100); color: var(--cv-navy-900);
+  }
+  .btn-ghost{
+    background: transparent; color: var(--cv-navy-900);
+    border: 1px solid var(--ink-100);
+  }
+  .btn-link{
+    background: transparent; color: var(--cv-navy-900);
+    padding: 11px 4px;
+  }
+  .btn-link::after{ content:" →"; }
+
+  /* Badges niveaux ENEOR */
+  .badges-row{
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .level-badge{
+    width: 80px; padding: 10px 6px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+  }
+  .level-badge .num{
+    font-size: 22px; font-weight: 700; line-height: 1;
+  }
+  .level-badge .lab{
+    font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+    font-weight: 600; margin-top: 4px;
+  }
+  .lvl-0{ background: var(--ink-300); }
+  .lvl-2{ background: var(--sem-warning); }
+  .lvl-3{ background: var(--sem-success); }
+  .lvl-4{ background: var(--cv-navy-900); }
+
+  .pills-row{ display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill{
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11.5px; font-weight: 600;
+    background: var(--cv-sky-100); color: var(--cv-navy-800);
+  }
+  .pill.success{ background: #E6F6EE; color: #14794A; }
+  .pill.warn{    background: #FEF1DD; color: #B8730D; }
+  .pill.danger{  background: #FCEAEA; color: #B22A2A; }
+  .pill.info{    background: #E1ECFB; color: var(--cv-navy-800); }
+
+  .card-comp{
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 24px;
+    background: var(--paper);
+    flex: 1; min-width: 240px;
+    border-top: 3px solid var(--cv-cyan-500);
+  }
+  .card-comp .ic{
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    color: var(--cv-cyan-500);
+    margin-bottom: 12px;
+  }
+  .card-comp h5{
+    margin: 0 0 6px; font-size: 15px; color: var(--cv-navy-900);
+  }
+  .card-comp p{
+    margin: 0; font-size: 12.5px; color: var(--ink-500); line-height: 1.5;
+  }
+
+  /* ───────── Wireframes templates ───────── */
+  .wire-meta{
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-500);
+    margin: 0 0 10px;
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .wire-meta .dot{ width: 6px; height: 6px; background: var(--cv-cyan-500); border-radius: 50%; }
+  .wire-stack{
+    display: grid;
+    gap: 36px;
+  }
+  .wire-block h3{
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--cv-navy-900);
+    margin: 0 0 4px;
+  }
+  .wire-block p.note{
+    font-size: 13px; color: var(--ink-500);
+    margin: 0 0 14px;
+    max-width: 720px;
+  }
+
+  /* Mock PowerPoint slide */
+  .ppt{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--paper);
+    border: 1.5px dashed var(--ink-300);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Caveat', cursive;
+    color: var(--ink-700);
+  }
+  .ppt .label{
+    position: absolute;
+    background: var(--paper);
+    padding: 1px 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: var(--ink-500);
+    border: 1px solid var(--ink-100);
+    border-radius: 3px;
+    text-transform: uppercase; letter-spacing: .04em;
+    z-index: 5;
+  }
+  .ppt .ph-line{
+    background: var(--ink-100);
+    height: 8px; border-radius: 2px;
+  }
+  .ppt .ph-rect{
+    background: repeating-linear-gradient(135deg, var(--ink-100) 0 8px, transparent 8px 16px);
+    border: 1px dashed var(--ink-300);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: var(--ink-500);
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .ppt .scribble{
+    font-family: 'Caveat', cursive;
+    font-size: 14px;
+    color: var(--ink-700);
+  }
+
+  /* slides templates côte à côte */
+  .slide-pair{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* PPT — slide titre */
+  .ppt-title{
+    background: linear-gradient(135deg, var(--cv-navy-900) 0%, var(--cv-navy-700) 50%, var(--cv-cyan-500) 100%);
+  }
+  .ppt-title::before{
+    content:""; position: absolute; bottom:0; right: 0;
+    width: 220px; height: 60px;
+    background-image: radial-gradient(rgba(255,255,255,.4) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  /* PPT — slide contenu */
+  .ppt-content::before{
+    content:""; position: absolute; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(90deg, var(--cv-navy-900), var(--cv-cyan-500));
+  }
+
+  /* Word doc */
+  .word-page{
+    width: 100%;
+    aspect-ratio: 210/297;
+    max-width: 380px;
+    background: var(--paper);
+    border: 1.5px dashed var(--ink-300);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .word-pair{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 24px; justify-content: start;
+  }
+
+  /* Excel */
+  .excel{
+    background: var(--paper);
+    border: 1.5px dashed var(--ink-300);
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+  .excel-toolbar{
+    background: #F1F4F9;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--ink-100);
+    display: flex; align-items: center; gap: 10px;
+    color: var(--ink-500);
+  }
+  .excel-toolbar .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--ink-300); }
+  .xtable{
+    width: 100%; border-collapse: collapse;
+  }
+  .xtable th, .xtable td{
+    padding: 9px 12px;
+    border: 1px solid var(--ink-100);
+    text-align: left;
+    font-weight: 400;
+  }
+  .xtable thead th{
+    background: var(--cv-navy-900);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase; letter-spacing: .04em; font-size: 10px;
+  }
+  .xtable tbody tr:nth-child(even) td{ background: var(--cv-sky-50); }
+  .xtable .pos{ color: var(--sem-success); font-weight: 600; }
+  .xtable .neg{ color: var(--sem-danger); font-weight: 600; }
+  .xtable .tag{
+    display: inline-block;
+    padding: 2px 8px; border-radius: 4px;
+    background: var(--cv-cyan-500); color: white;
+    font-size: 10px; font-weight: 600;
+  }
+  .xtable .tag.warn{ background: var(--sem-warning); }
+  .xtable .tag.ok{ background: var(--sem-success); }
+
+  /* Web mocks */
+  .web-mock{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .web-bar{
+    background: #F1F4F9;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--ink-100);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .web-bar .d{ width: 10px; height: 10px; border-radius: 50%; background: var(--ink-300); }
+  .web-bar .url{
+    flex:1;
+    background: var(--paper);
+    border-radius: 4px;
+    height: 22px;
+    margin-left: 10px;
+    padding: 4px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-500);
+    line-height: 14px;
+  }
+  .web-body{ padding: 32px 32px 40px; }
+  .web-nav{
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--ink-100);
+    margin-bottom: 32px;
+  }
+  .web-nav .logo{
+    font-weight: 800; color: var(--cv-navy-900); font-size: 20px;
+    letter-spacing: -.01em;
+  }
+  .web-nav ul{
+    display: flex; gap: 26px; list-style: none; padding: 0; margin: 0;
+    font-size: 13px; color: var(--ink-700); font-weight: 500;
+  }
+  .web-hero h2{
+    font-size: 40px; font-weight: 800; color: var(--cv-navy-900);
+    margin: 0 0 14px; line-height: 1.1; letter-spacing: -.015em;
+    max-width: 540px;
+  }
+  .web-hero h2 em{
+    font-style: normal;
+    background: linear-gradient(90deg, var(--cv-cyan-500), var(--cv-blue-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .web-hero p{
+    color: var(--ink-500); font-size: 14px; max-width: 480px;
+    margin: 0 0 22px;
+  }
+  .web-cards{
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .web-card{
+    border: 1px solid var(--ink-100);
+    border-left: 3px solid var(--cv-cyan-500);
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .web-card .num{
+    font-size: 24px; font-weight: 800; color: var(--cv-navy-900);
+  }
+  .web-card .lab{ font-size: 11.5px; color: var(--ink-500); margin-top: 4px; }
+
+  /* Spacing / Radius / Shadows ribbon */
+  .tokens-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .token-card{
+    background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r);
+    padding: 22px;
+  }
+  .token-card h4{
+    margin: 0 0 14px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-700);
+  }
+  .spc-row{
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--ink-100);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-500);
+  }
+  .spc-row:last-child{ border-bottom: 0; }
+  .spc-row .bar{
+    height: 8px; background: var(--cv-cyan-500); border-radius: 2px; flex-shrink: 0;
+  }
+  .spc-row .name{ width: 50px; }
+  .spc-row .val{ margin-left: auto; }
+
+  .radii{ display: flex; gap: 12px; flex-wrap: wrap; }
+  .radii div{
+    flex: 1; aspect-ratio: 1; min-width: 60px;
+    background: var(--cv-sky-100);
+    display: grid; place-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--cv-navy-800);
+  }
+
+  .shadow-cards{ display: flex; flex-direction: column; gap: 10px; }
+  .shadow-cards .sh{
+    height: 50px; background: var(--paper);
+    border: 1px solid var(--ink-100);
+    border-radius: 8px;
+    display: flex; align-items: center; padding: 0 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-500);
+  }
+  .sh.s1{ box-shadow: 0 1px 2px rgba(15,27,51,.06); }
+  .sh.s2{ box-shadow: 0 4px 12px rgba(15,27,51,.08); }
+  .sh.s3{ box-shadow: 0 12px 32px rgba(15,27,51,.12); }
+
+  /* footer */
+  .doc-footer{
+    padding: 48px;
+    background: var(--cv-navy-900);
+    color: rgba(255,255,255,.7);
+    font-size: 13px;
+  }
+  .doc-footer .row{
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    max-width: 1200px;
+  }
+  .doc-footer h5{
+    color: white; font-size: 14px; margin: 0 0 10px;
+  }
+  .doc-footer p{ margin: 0; line-height: 1.6; max-width: 380px; }
+
+  /* ───────── Tweakable hooks applied across the doc ───────── */
+  /* Override accent cyan via OKLCH from tokens */
+  body{
+    --cv-cyan-500: oklch(var(--tw-cyan-l) var(--tw-cyan-c) var(--tw-cyan-h));
+    --cv-cyan-400: oklch(calc(var(--tw-cyan-l) + .08) var(--tw-cyan-c) var(--tw-cyan-h));
+  }
+
+  /* Cards & surfaces respect tweak vars */
+  .swatch, .typo-hero, .comp-row, .web-mock, .word-page, .logo-card,
+  .token-card, .rule, .weight, .icon-cell, .card-comp, .scale-table{
+    border-radius: calc(var(--r) * var(--tw-radius-mult));
+    box-shadow:
+      0 1px 2px rgba(15,27,51, calc(.04 * var(--tw-shadow-strength))),
+      0 calc(8px * var(--tw-shadow-strength)) calc(24px * var(--tw-shadow-strength)) rgba(15,27,51, calc(.06 * var(--tw-shadow-strength)));
+    border-color: rgba(165,174,190, calc(.5 * var(--tw-border-strength)));
+    background: var(--tw-surface-fill);
+    backdrop-filter: blur(var(--tw-surface-blur)) saturate(140%);
+    -webkit-backdrop-filter: blur(var(--tw-surface-blur)) saturate(140%);
+  }
+  .typo-hero, .dir-card{ border-radius: calc(var(--r-lg) * var(--tw-radius-mult)); }
+
+  /* Mood — display weight & tracking */
+  .cover-title, .typo-hero .display{
+    font-weight: var(--tw-display-weight);
+    letter-spacing: var(--tw-display-track);
+  }
+  .sec-eyebrow, .cover-tag, .cover-meta dt, .swatch .info .role,
+  .nav-group-title, .palette-block h3, .comp-section h3, .token-card h4{
+    letter-spacing: var(--tw-eyebrow-track);
+  }
+  .sec{ padding: calc(64px * var(--tw-density-pad)) calc(48px * var(--tw-density-pad)); }
+
+  /* Mood: editorial gets a serif-flavoured display via italic + lighter weight */
+  body.mood-editorial .cover-title em,
+  body.mood-editorial .web-hero h2 em{
+    font-style: italic;
+    font-weight: 300;
+  }
+  body.mood-tech .cover-title{
+    text-transform: none;
+  }
+  body.mood-tech .sec-eyebrow::before{ width: 40px; }
+
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; }
+    aside.nav{ position: relative; height: auto; }
+    .dir-compare{ grid-template-columns: 1fr; }
+    .slide-pair{ grid-template-columns: 1fr; }
+    .word-pair{ grid-template-columns: 1fr; justify-content: center;}
+  }
+</style>
+</head>
+<body class="dir-conservative">
+
+<div class="layout">
+
+  <!-- ─────── Sidebar nav ─────── -->
+  <aside class="nav">
+    <div class="brand">
+      <img src="assets/eneor-logo.png" alt="ENEOR" />
+    </div>
+    <div class="brand" style="border:0; padding:0; margin: -8px 0 18px;">
+      <div class="meta">
+        <strong>Charte Graphique</strong>
+        Brand Guidelines · v1.0
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Fondations</div>
+      <a href="#cover" data-sec="cover" class="active"><span class="num">00</span> Couverture</a>
+      <a href="#logo" data-sec="logo"><span class="num">01</span> Logo</a>
+      <a href="#couleurs" data-sec="couleurs"><span class="num">02</span> Couleurs</a>
+      <a href="#typographie" data-sec="typographie"><span class="num">03</span> Typographie</a>
+      <a href="#tokens" data-sec="tokens"><span class="num">04</span> Espacements & rayons</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Système</div>
+      <a href="#iconographie" data-sec="iconographie"><span class="num">05</span> Iconographie</a>
+      <a href="#composants" data-sec="composants"><span class="num">06</span> Composants UI</a>
+      <a href="#imagerie" data-sec="imagerie"><span class="num">07</span> Imagerie</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Templates</div>
+      <a href="#powerpoint" data-sec="powerpoint"><span class="num">08</span> PowerPoint</a>
+      <a href="#word" data-sec="word"><span class="num">09</span> Word</a>
+      <a href="#excel" data-sec="excel"><span class="num">10</span> Excel</a>
+      <a href="#web" data-sec="web"><span class="num">11</span> Web & Application</a>
+    </div>
+  </aside>
+
+  <!-- ─────── Main content ─────── -->
+  <main>
+
+    <div class="direction-banner">
+      <div>
+        <div class="label">Direction visuelle active</div>
+        <h1 id="dirName">Conservatrice — fidèle à l'existant</h1>
+      </div>
+      <div class="dir-toggle" role="tablist">
+        <button id="btn-cv" class="on" onclick="setDir('conservative')">Conservatrice</button>
+        <button id="btn-md" onclick="setDir('modern')">Moderne</button>
+      </div>
+    </div>
+
+    <!-- ═══════ COVER ═══════ -->
+    <section class="sec cover" id="cover">
+      <div class="cover-inner">
+        <div class="cover-tag">Charte graphique · Brand guidelines</div>
+        <h1 class="cover-title">L'identité visuelle <em>ENEOR</em><br/>en un seul document.</h1>
+        <p class="cover-sub">Logo, couleurs, typographies, composants et templates pour PowerPoint, Word, Excel et le web. Cohérence, lisibilité et expertise au service de la performance énergétique du bâtiment.</p>
+
+        <dl class="cover-meta">
+          <div><dt>Version</dt><dd>1.0 — Mai 2026</dd></div>
+          <div><dt>Métier</dt><dd>Performance énergétique du bâtiment</dd></div>
+          <div><dt>Audiences</dt><dd>Maîtres d'ouvrage · Industriels · Collectivités</dd></div>
+          <div><dt>Périmètre</dt><dd>Print · Bureautique · Digital</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ═══════ LOGO ═══════ -->
+    <section class="sec" id="logo">
+      <div class="sec-eyebrow">01 — Logo</div>
+      <h2>Le logo ENEOR</h2>
+      <p class="lede">Le logo combine un wordmark bleu marine et un symbole — la voile/flèche en dégradé bleu/cyan — qui évoque le mouvement, l'ascension et la transition énergétique. Il s'utilise sur fond clair en priorité, et en version monochrome blanche sur les fonds saturés.</p>
+
+      <div class="logo-grid">
+        <div class="logo-card">
+          <span class="label">Version principale · fond clair</span>
+          <img src="assets/eneor-logo.png" alt="Logo ENEOR" />
+        </div>
+        <div class="logo-card on-navy">
+          <span class="label">Monochrome · fond marine</span>
+          <img src="assets/eneor-logo.png" alt="Logo ENEOR" />
+        </div>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-card on-cyan">
+          <span class="label">Sur dégradé corporate</span>
+          <img src="assets/eneor-logo.png" alt="Logo ENEOR" />
+        </div>
+        <div class="logo-card" style="background: var(--paper-2);">
+          <span class="label">Zone de protection · 1× hauteur du E</span>
+          <div style="position:relative; padding: 30px;">
+            <div style="position:absolute; inset:0; border: 1.5px dashed var(--cv-cyan-500); border-radius: 4px;"></div>
+            <img src="assets/eneor-logo.png" alt="Logo ENEOR" style="max-width: 240px; display:block;" />
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-rules">
+        <div class="rule">
+          <h4 class="yes"><span class="ic">✓</span> Tailles minimales</h4>
+          <p>Web : 28&nbsp;px de hauteur. Print : 12&nbsp;mm. En dessous, le tagline "Global Energy Solutions" devient illisible.</p>
+        </div>
+        <div class="rule">
+          <h4 class="yes"><span class="ic">✓</span> Zone de protection</h4>
+          <p>Réserver autour du logo un espace équivalent à la hauteur de la lettre "E". Aucun élément graphique ou texte dans cette zone.</p>
+        </div>
+        <div class="rule">
+          <h4 class="no"><span class="ic">✕</span> À éviter</h4>
+          <p>Ne pas déformer, recolorer arbitrairement, ajouter d'effets (ombre portée, contour), ni inverser les proportions wordmark/symbole.</p>
+        </div>
+        <div class="rule">
+          <h4 class="no"><span class="ic">✕</span> Fonds non recommandés</h4>
+          <p>Éviter les photos très chargées sans calque de protection ; pas de fonds turquoise vif (le symbole disparaît). Préférer un cartouche.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ COULEURS ═══════ -->
+    <section class="sec" id="couleurs">
+      <div class="sec-eyebrow">02 — Couleurs</div>
+      <h2>Palette de couleurs</h2>
+      <p class="lede">Deux directions sont proposées : la <strong>Conservatrice</strong> prolonge fidèlement l'existant (bleu marine + turquoise vif), la <strong>Moderne</strong> resserre la palette autour d'un teal contemporain et d'un bleu plus tranché. Basculez via le toggle en haut de page pour comparer en contexte.</p>
+
+      <div class="dir-compare">
+        <div class="dir-card cv-dir">
+          <div class="swatches-mini">
+            <span style="background:#0F2A5C"></span>
+            <span style="background:#1B4FA6"></span>
+            <span style="background:#2BC4C4"></span>
+          </div>
+          <div class="tag">Direction A</div>
+          <h4>Conservatrice</h4>
+          <p>Marine + turquoise + dégradé. Continuité parfaite avec les supports existants. Ton institutionnel et expert.</p>
+        </div>
+        <div class="dir-card md-dir">
+          <div class="swatches-mini">
+            <span style="background:#0B1F3A"></span>
+            <span style="background:#3563E9"></span>
+            <span style="background:#14B8A6"></span>
+          </div>
+          <div class="tag">Direction B</div>
+          <h4>Moderne</h4>
+          <p>Teal saturé + bleu électrique. Plus contrasté, plus tech. Pour donner un coup de jeune sur le digital et les rapports premium.</p>
+        </div>
+      </div>
+
+      <!-- Palette principale -->
+      <div class="palette-block">
+        <h3>Couleurs principales — identité</h3>
+        <div class="swatches">
+
+          <div class="swatch">
+            <div class="chip" style="background: var(--cv-navy-900); color: white;">
+              <span class="ratio">AAA · 14:1</span>
+              <strong>Aa</strong>
+            </div>
+            <div class="info">
+              <div class="name">Marine</div>
+              <div class="role">Primaire · Texte titres</div>
+              <code class="hex-navy"></code>
+            </div>
+          </div>
+
+          <div class="swatch">
+            <div class="chip" style="background: var(--cv-navy-700); color: white;">
+              <span class="ratio">AA · 7:1</span>
+              <strong>Aa</strong>
+            </div>
+            <div class="info">
+              <div class="name">Bleu profond</div>
+              <div class="role">Secondaire · CTA, liens</div>
+              <code class="hex-navy7"></code>
+            </div>
+          </div>
+
+          <div class="swatch">
+            <div class="chip" style="background: var(--cv-cyan-500); color: white;">
+              <span class="ratio">AA · 3:1</span>
+              <strong>Aa</strong>
+            </div>
+            <div class="info">
+              <div class="name">Cyan signature</div>
+              <div class="role">Accent · Highlights</div>
+              <code class="hex-cyan"></code>
+            </div>
+          </div>
+
+          <div class="swatch">
+            <div class="chip" style="background: var(--cv-sky-100); color: var(--cv-navy-900);">
+              <span class="ratio">—</span>
+              <strong>Aa</strong>
+            </div>
+            <div class="info">
+              <div class="name">Bleu pâle</div>
+              <div class="role">Surfaces · cartes claires</div>
+              <code class="hex-sky"></code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sémantique -->
+      <div class="palette-block">
+        <h3>Couleurs sémantiques — niveaux & statuts</h3>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="chip" style="background: var(--sem-success); color: white;"><strong>✓ OK</strong></div>
+            <div class="info"><div class="name">Succès</div><div class="role">ROI &lt; 1 an · Validé</div><code class="hex-success"></code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--sem-warning); color: white;"><strong>⚠ Watch</strong></div>
+            <div class="info"><div class="name">Attention</div><div class="role">À valider · 1-3 ans</div><code class="hex-warn"></code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--sem-danger); color: white;"><strong>✕ Stop</strong></div>
+            <div class="info"><div class="name">Critique</div><div class="role">Bloquant · ROI &gt; 5 ans</div><code class="hex-danger"></code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--sem-neutral); color: white;"><strong>— N/A</strong></div>
+            <div class="info"><div class="name">Neutre</div><div class="role">Écarté · Hors champ</div><code class="hex-neut"></code></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Niveaux ENEOR -->
+      <div class="palette-block">
+        <h3>Niveaux d'arbitrage ENEOR — code couleur métier</h3>
+        <div class="comp-row" style="background: var(--paper);">
+          <div class="badges-row">
+            <div class="level-badge lvl-0"><div class="num">0</div><div class="lab">Écarté</div></div>
+            <div class="level-badge lvl-2"><div class="num">2</div><div class="lab">À valider</div></div>
+            <div class="level-badge lvl-3"><div class="num">3</div><div class="lab">Prioritaire</div></div>
+            <div class="level-badge lvl-4"><div class="num">4</div><div class="lab">Faible</div></div>
+          </div>
+          <p style="font-size: 13px; color: var(--ink-500); margin: 0; flex:1; min-width: 240px;">
+            Conservé tel quel depuis la Master List : système de priorisation universel pour le commissioning, audit et registre des mesures.
+          </p>
+        </div>
+      </div>
+
+      <!-- Neutres -->
+      <div class="palette-block">
+        <h3>Échelle de gris — texte & surfaces</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background: var(--ink-900); color: white;"></div><div class="info"><div class="name">Ink 900</div><div class="role">Texte principal</div><code>#0F1B33</code></div></div>
+          <div class="swatch"><div class="chip" style="background: var(--ink-700); color: white;"></div><div class="info"><div class="name">Ink 700</div><div class="role">Texte secondaire</div><code>#2C3A52</code></div></div>
+          <div class="swatch"><div class="chip" style="background: var(--ink-500); color: white;"></div><div class="info"><div class="name">Ink 500</div><div class="role">Texte mineur</div><code>#5A6679</code></div></div>
+          <div class="swatch"><div class="chip" style="background: var(--ink-300);"></div><div class="info"><div class="name">Ink 300</div><div class="role">Bordures, dividers</div><code>#A6AEBE</code></div></div>
+          <div class="swatch"><div class="chip" style="background: var(--ink-100);"></div><div class="info"><div class="name">Ink 100</div><div class="role">Lignes fines</div><code>#E5E8EE</code></div></div>
+          <div class="swatch"><div class="chip" style="background: var(--paper-2); border: 1px solid var(--ink-100);"></div><div class="info"><div class="name">Paper 2</div><div class="role">Fond document</div><code>#F7F9FC</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TYPOGRAPHIE ═══════ -->
+    <section class="sec" id="typographie">
+      <div class="sec-eyebrow">03 — Typographie</div>
+      <h2>Montserrat — système typographique</h2>
+      <p class="lede">Une seule famille pour tout : Montserrat (Google Fonts, gratuite, installable sur Word/PowerPoint via le pack Office). Géométrique, neutre et internationalement lisible. 4 graisses suffisent à couvrir 100% des cas.</p>
+
+      <div class="typo-hero">
+        <div class="name">Montserrat · Display · 800 / -2.5%</div>
+        <div class="display">Performance<br/>Énergétique.</div>
+        <div class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ <span>abcdefghijklmnopqrstuvwxyz</span> 0123456789 €&amp;%@#</div>
+      </div>
+
+      <div class="weights">
+        <div class="weight">
+          <div class="sample" style="font-weight: 300;">Aa</div>
+          <div class="meta"><span>Light</span><span>300</span></div>
+        </div>
+        <div class="weight">
+          <div class="sample" style="font-weight: 400;">Aa</div>
+          <div class="meta"><span>Regular</span><span>400</span></div>
+        </div>
+        <div class="weight">
+          <div class="sample" style="font-weight: 500;">Aa</div>
+          <div class="meta"><span>Medium</span><span>500</span></div>
+        </div>
+        <div class="weight">
+          <div class="sample" style="font-weight: 600;">Aa</div>
+          <div class="meta"><span>Semibold</span><span>600</span></div>
+        </div>
+        <div class="weight">
+          <div class="sample" style="font-weight: 700;">Aa</div>
+          <div class="meta"><span>Bold</span><span>700</span></div>
+        </div>
+        <div class="weight">
+          <div class="sample" style="font-weight: 800;">Aa</div>
+          <div class="meta"><span>ExtraBold</span><span>800</span></div>
+        </div>
+      </div>
+
+      <h3 style="margin: 0 0 14px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-700);">Échelle typographique</h3>
+      <div class="scale-table">
+        <div class="scale-row">
+          <div class="tag">Display</div>
+          <div class="specimen" style="font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -.02em;">La transition énergétique</div>
+          <div class="specs">56 / 56<br/>800 · -2%<br/>Couvertures, hero</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">H1</div>
+          <div class="specimen" style="font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -.015em;">Commissioning</div>
+          <div class="specs">40 / 44<br/>700 · -1.5%<br/>Titres slides PPT</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">H2</div>
+          <div class="specimen" style="font-size: 28px; font-weight: 600; line-height: 1.2;">Le périmètre technique du Cx</div>
+          <div class="specs">28 / 34<br/>600<br/>Sous-titres, sections</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">H3</div>
+          <div class="specimen" style="font-size: 20px; font-weight: 600; line-height: 1.3;">CVC &amp; Ventilation</div>
+          <div class="specs">20 / 26<br/>600<br/>Titres de cartes</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">Lead</div>
+          <div class="specimen" style="font-size: 18px; font-weight: 400; line-height: 1.55; color: var(--ink-700);">Réoptimisation périodique d'un bâtiment déjà commissionné.</div>
+          <div class="specs">18 / 28<br/>400<br/>Chapô, intros</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">Body</div>
+          <div class="specimen" style="font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--ink-700);">Production chaud/froid, réseaux, régulation, émetteurs et traitement de l'air.</div>
+          <div class="specs">15 / 24<br/>400<br/>Texte courant</div>
+        </div>
+        <div class="scale-row">
+          <div class="tag">Caption</div>
+          <div class="specimen" style="font-size: 12px; font-weight: 600; line-height: 1.4; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-500);">NIVEAUX D'ARBITRAGE ENEOR</div>
+          <div class="specs">12 / 17<br/>600 · +8%<br/>Étiquettes, eyebrow</div>
+        </div>
+      </div>
+
+      <div class="rule" style="margin-top: 24px;">
+        <h4><span class="ic" style="background: var(--cv-cyan-500); color: white;">i</span> Polices de substitution</h4>
+        <p>Si Montserrat n'est pas disponible (machine cliente sans installation), utiliser dans cet ordre&nbsp;: <strong>Calibri</strong> (Office par défaut), <strong>Segoe UI</strong> (Windows), <strong>Helvetica</strong> (macOS), puis sans-serif système. Toujours conserver les graisses 400/600/700.</p>
+      </div>
+    </section>
+
+    <!-- ═══════ TOKENS ═══════ -->
+    <section class="sec" id="tokens">
+      <div class="sec-eyebrow">04 — Tokens</div>
+      <h2>Espacements, rayons, ombres</h2>
+      <p class="lede">Les unités atomiques qui structurent tous les documents. Multiples de 4&nbsp;px en digital, multiples de 2&nbsp;mm en print.</p>
+
+      <div class="tokens-grid">
+        <div class="token-card">
+          <h4>Espacements (px)</h4>
+          <div class="spc-row"><span class="name">xs</span><div class="bar" style="width: 4px;"></div><span class="val">4 px</span></div>
+          <div class="spc-row"><span class="name">sm</span><div class="bar" style="width: 8px;"></div><span class="val">8 px</span></div>
+          <div class="spc-row"><span class="name">md</span><div class="bar" style="width: 16px;"></div><span class="val">16 px</span></div>
+          <div class="spc-row"><span class="name">lg</span><div class="bar" style="width: 24px;"></div><span class="val">24 px</span></div>
+          <div class="spc-row"><span class="name">xl</span><div class="bar" style="width: 40px;"></div><span class="val">40 px</span></div>
+          <div class="spc-row"><span class="name">2xl</span><div class="bar" style="width: 64px;"></div><span class="val">64 px</span></div>
+        </div>
+
+        <div class="token-card">
+          <h4>Rayons d'angle</h4>
+          <div class="radii">
+            <div style="border-radius: 4px;">4</div>
+            <div style="border-radius: 8px;">8</div>
+            <div style="border-radius: 12px;">12</div>
+            <div style="border-radius: 20px;">20</div>
+          </div>
+          <p style="font-size: 12px; color: var(--ink-500); margin: 12px 0 0;">12&nbsp;px par défaut sur cartes ; 8&nbsp;px sur boutons ; 20&nbsp;px sur cartes éditoriales.</p>
+        </div>
+
+        <div class="token-card">
+          <h4>Ombres</h4>
+          <div class="shadow-cards">
+            <div class="sh s1">elevation-1 — surfaces plates</div>
+            <div class="sh s2">elevation-2 — cartes</div>
+            <div class="sh s3">elevation-3 — modales</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ ICONOGRAPHIE ═══════ -->
+    <section class="sec" id="iconographie">
+      <div class="sec-eyebrow">05 — Iconographie</div>
+      <h2>Système d'icônes</h2>
+      <p class="lede">Icônes linéaires, trait fin (1.6&nbsp;px à 24&nbsp;px), angles arrondis. Toujours en cyan signature sur fond clair, en blanc sur fond marine. Source recommandée : <strong>Lucide</strong> (open-source, MIT).</p>
+
+      <div class="icon-grid">
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+          <div class="name">CVC &amp; Ventilation</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.7.7 1 1.5 1 2.3V18h6v-1c0-.8.3-1.6 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          <div class="name">Éclairage &amp; ECS</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 18h20M9 22h6"/></svg>
+          <div class="name">GTB &amp; Automatisme</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M2 10h20M2 14h20M8 6v12M16 6v12"/></svg>
+          <div class="name">Énergies renouvelables</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V10l9-7 9 7v12"/><path d="M9 22V12h6v10"/></svg>
+          <div class="name">Enveloppe bâtiment</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
+          <div class="name">Suivi &amp; mesure</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div class="name">Sécurité incendie</div>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+          <div class="name">Audit &amp; diagnostic</div>
+        </div>
+      </div>
+
+      <div class="icon-rules-grid">
+        <div class="rule">
+          <h4 class="yes"><span class="ic">✓</span> Style</h4>
+          <p>Linéaire, trait <code>1.6 px</code> @ 24 px, terminaisons et jointures arrondies. Aucune ombre, aucun remplissage.</p>
+        </div>
+        <div class="rule">
+          <h4 class="yes"><span class="ic">✓</span> Tailles canoniques</h4>
+          <p><code>16 / 20 / 24 / 32 / 48 px</code>. Toujours sur grille 4 px. En print : 4 / 6 / 8 mm.</p>
+        </div>
+        <div class="rule">
+          <h4 class="no"><span class="ic">✕</span> À ne pas faire</h4>
+          <p>Pas d'emoji, pas d'icônes 3D, pas de mix de styles (filled + outline) dans un même document.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ COMPOSANTS UI ═══════ -->
+    <section class="sec" id="composants">
+      <div class="sec-eyebrow">06 — Composants</div>
+      <h2>Bibliothèque de composants</h2>
+      <p class="lede">Les briques réutilisables qui apparaissent dans les supports. Chaque composant existe en variantes — la palette s'adapte automatiquement à la direction sélectionnée.</p>
+
+      <div class="comp-section">
+        <h3>Boutons</h3>
+        <div class="comp-row">
+          <button class="btn btn-primary">Action principale</button>
+          <button class="btn btn-cyan">Action accent</button>
+          <button class="btn btn-secondary">Secondaire</button>
+          <button class="btn btn-ghost">Tertiaire</button>
+          <button class="btn btn-link">En savoir plus</button>
+        </div>
+      </div>
+
+      <div class="comp-section">
+        <h3>Pills &amp; étiquettes</h3>
+        <div class="comp-row">
+          <div class="pills-row">
+            <span class="pill info">Commissioning</span>
+            <span class="pill">Audit</span>
+            <span class="pill success">ROI &lt; 1 an</span>
+            <span class="pill warn">À valider</span>
+            <span class="pill danger">Bloquant</span>
+            <span class="pill info">CAPEX 0 €</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-section">
+        <h3>Cartes thématiques (style "périmètre technique")</h3>
+        <div class="comp-row" style="background: var(--paper-2);">
+          <div class="card-comp">
+            <div class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            </div>
+            <h5>CVC &amp; Ventilation</h5>
+            <p>Production chaud/froid, réseaux, régulation, émetteurs et traitement de l'air.</p>
+          </div>
+          <div class="card-comp">
+            <div class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
+            </div>
+            <h5>Suivi &amp; mesure</h5>
+            <p>Plans de comptage et vérification des objectifs de performance.</p>
+          </div>
+          <div class="card-comp">
+            <div class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 18h20M9 22h6"/></svg>
+            </div>
+            <h5>GTB &amp; Automatisme</h5>
+            <p>Systèmes de gestion, suivi de performance et détection des défauts.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-section">
+        <h3>Niveaux d'arbitrage (badges)</h3>
+        <div class="comp-row">
+          <div class="badges-row">
+            <div class="level-badge lvl-0"><div class="num">0</div><div class="lab">Écarté</div></div>
+            <div class="level-badge lvl-2"><div class="num">2</div><div class="lab">À valider</div></div>
+            <div class="level-badge lvl-3"><div class="num">3</div><div class="lab">Prioritaire</div></div>
+            <div class="level-badge lvl-4"><div class="num">4</div><div class="lab">Faible</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ IMAGERIE ═══════ -->
+    <section class="sec" id="imagerie">
+      <div class="sec-eyebrow">07 — Imagerie</div>
+      <h2>Style photographique &amp; illustrations</h2>
+      <p class="lede">Trois registres complémentaires : photo réelle de bâtiments / chantiers, illustrations vectorielles métier (style "bateau RCx"), et data viz technique. Toujours traités avec la même hiérarchie de couleurs.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: var(--r); overflow: hidden;">
+          <div style="aspect-ratio: 4/3; background: repeating-linear-gradient(135deg, var(--ink-100) 0 12px, var(--paper-2) 12px 24px); position: relative; display: grid; place-items: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">Photo bâtiment / chantier</div>
+          </div>
+          <div style="padding: 16px;">
+            <h5 style="margin: 0 0 4px; font-size: 14px; color: var(--cv-navy-900);">Photo réelle</h5>
+            <p style="margin: 0; font-size: 12.5px; color: var(--ink-500); line-height: 1.5;">Tirage légèrement désaturé, dominante bleue froide. Cadrages architecturaux serrés, lumière naturelle.</p>
+          </div>
+        </div>
+        <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: var(--r); overflow: hidden;">
+          <div style="aspect-ratio: 4/3; background: linear-gradient(135deg, var(--cv-navy-700), var(--cv-cyan-500)); position: relative; display: grid; place-items: center; color: white;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: .85; text-transform: uppercase; letter-spacing: .08em;">Illustration vectorielle</div>
+          </div>
+          <div style="padding: 16px;">
+            <h5 style="margin: 0 0 4px; font-size: 14px; color: var(--cv-navy-900);">Illustration plate</h5>
+            <p style="margin: 0; font-size: 12.5px; color: var(--ink-500); line-height: 1.5;">Style plat, palette restreinte (3-4 teintes max). Pour métaphores et concepts (commissioning de navire, etc.).</p>
+          </div>
+        </div>
+        <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: var(--r); overflow: hidden;">
+          <div style="aspect-ratio: 4/3; background: var(--cv-sky-50); position: relative; padding: 24px; display: flex; align-items: flex-end; gap: 6px;">
+            <div style="flex:1; height: 30%; background: var(--cv-cyan-500); border-radius: 3px 3px 0 0;"></div>
+            <div style="flex:1; height: 55%; background: var(--cv-navy-700); border-radius: 3px 3px 0 0;"></div>
+            <div style="flex:1; height: 80%; background: var(--cv-cyan-500); border-radius: 3px 3px 0 0;"></div>
+            <div style="flex:1; height: 45%; background: var(--cv-navy-700); border-radius: 3px 3px 0 0;"></div>
+            <div style="flex:1; height: 70%; background: var(--cv-cyan-500); border-radius: 3px 3px 0 0;"></div>
+            <div style="position: absolute; bottom: 8px; left: 24px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">Data viz / graphiques</div>
+          </div>
+          <div style="padding: 16px;">
+            <h5 style="margin: 0 0 4px; font-size: 14px; color: var(--cv-navy-900);">Data visualisation</h5>
+            <p style="margin: 0; font-size: 12.5px; color: var(--ink-500); line-height: 1.5;">Couleurs métier (cyan + marine + sémantiques). Toujours légendées, axes nommés, unités explicites (kWh, €, %).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ═══════ POWERPOINT — HI-FI ═══════ -->
+    <section class="sec" id="powerpoint">
+      <div class="sec-eyebrow">08 — Templates</div>
+      <h2>PowerPoint — gabarits hi-fi</h2>
+      <p class="lede">Système de 7 gabarits 16:9 (1920×1080) en Montserrat. Bandeau supérieur dégradé marine→cyan signature, pied de page avec chip section + pagination + logo. Marges sécurisées 60&nbsp;px.</p>
+
+      <!-- 1. COVER + SECTION -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 1 &amp; 2 · Couverture &amp; séparateur de section <span class="ref">— PPT.01 / PPT.02</span></div>
+        <p class="desc">Couverture corporate plein bandeau dégradé. Le séparateur de section utilise un grand chiffre fantôme + titre — il rythme le déroulé entre les grandes parties.</p>
+        <div class="tpl-grid-2">
+          <div class="tpl-ppt is-cover">
+            <div class="ppt-header">
+              <div class="deco-tl"></div>
+              <div class="eyebrow">Présentation technique · 2025</div>
+              <h1>Commissioning &amp; Rétrocommissioning</h1>
+              <h2>Enjeux techniques, réglementaires &amp; stratégiques</h2>
+              <div class="cover-meta">
+                <div>Référence<strong>ENEOR-PRES-2025-001</strong></div>
+                <div>Auteur<strong>Bureau d'études ENEOR</strong></div>
+                <div>Diffusion<strong>Confidentiel · Client</strong></div>
+              </div>
+              <div class="ppt-logo">ENEOR</div>
+            </div>
+          </div>
+          <div class="tpl-ppt is-section">
+            <div class="section-num">02</div>
+            <div class="section-eyebrow">Partie · Chapitre 02</div>
+            <div class="section-title">Périmètre technique<br/>du Commissioning</div>
+            <div class="section-rule"></div>
+            <div class="ppt-logo">ENEOR</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. CONTENU CARTES -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 3 · Slide contenu — grille de cartes <span class="ref">— PPT.03</span></div>
+        <p class="desc">Le gabarit le plus utilisé : 6 cartes uniformes (3×2) avec icône + titre + courte explication. Carte additionnelle « Périmètre élargi » en pied pour les exceptions.</p>
+        <div class="tpl-ppt">
+          <div class="ppt-header">
+            <h1>Le périmètre technique du Cx</h1>
+            <h2>6 lots techniques + périmètre élargi</h2>
+            <div class="dots-r"></div><div class="dots-l"></div><div class="stripe"></div>
+          </div>
+          <div class="ppt-deco-tr"></div>
+          <div class="ppt-body">
+            <div class="grid-cards">
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg></div>
+                <h4>CVC &amp; Ventilation</h4>
+                <p>Production chaud/froid, réseaux, régulation, émetteurs et traitement de l'air.</p>
+              </div>
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12c1 1 2 2 2 4h4c0-2 1-3 2-4a7 7 0 0 0-4-12z"/></svg></div>
+                <h4>Éclairage &amp; ECS</h4>
+                <p>Installations, gestion DALI/KNX et Eau Chaude Sanitaire si besoins importants.</p>
+              </div>
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                <h4>GTB &amp; Automatisme</h4>
+                <p>Systèmes de gestion, suivi de performance et détection des défauts.</p>
+              </div>
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+                <h4>Énergies renouvelables</h4>
+                <p>Panneaux photovoltaïques, solaire thermique et autoconsommation.</p>
+              </div>
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V8l9-5 9 5v13M3 21h18M9 21V12h6v9"/></svg></div>
+                <h4>Enveloppe bâtiment</h4>
+                <p>Isolation, menuiseries, étanchéité à l'air et protections solaires.</p>
+              </div>
+              <div class="card">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+                <h4>Suivi &amp; mesure</h4>
+                <p>Plans de comptage et vérification des objectifs de performance.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ppt-footer">
+            <div class="crumb"><span class="badge">Commissioning</span><span>Périmètre technique</span></div>
+            <div class="pg">05 / 37</div>
+          </div>
+          <div class="ppt-logo">ENEOR</div>
+        </div>
+      </div>
+
+      <!-- 4. RACI / 2 colonnes -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 4 · Slide deux colonnes — RACI / acteurs <span class="ref">— PPT.04</span></div>
+        <p class="desc">Layout deux colonnes pour matrices RACI, comparatifs ou listes parallèles. Tableau coloré côté gauche, liste à puces côté droit.</p>
+        <div class="tpl-ppt">
+          <div class="ppt-header">
+            <h1>Acteurs du Cx — rôles &amp; responsabilités</h1>
+            <h2>Matrice RACI &amp; Commissioning Authority</h2>
+            <div class="dots-r"></div><div class="stripe"></div>
+          </div>
+          <div class="ppt-body">
+            <div class="two-col">
+              <div class="col-block">
+                <h3><span class="pin">R</span>Matrice RACI — livrables clés</h3>
+                <div class="data-block">
+                  <table class="data-table">
+                    <thead><tr><th>Livrable</th><th>CxA</th><th>MOA</th><th>BET</th><th>Entr.</th><th>Expl.</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Plan de Cx</strong></td><td><span class="pill-data now">X</span></td><td>U</td><td>P</td><td>P</td><td>U</td></tr>
+                      <tr><td><strong>Tests fonctionnels</strong></td><td><span class="pill-data now">X</span></td><td>U</td><td>P</td><td><span class="pill-data ok">X</span></td><td>P</td></tr>
+                      <tr><td><strong>Rapport Cx</strong></td><td><span class="pill-data now">X</span></td><td>U</td><td>U</td><td>U</td><td>U</td></tr>
+                      <tr><td><strong>Tests saisonniers</strong></td><td><span class="pill-data now">X</span></td><td>U</td><td>P</td><td>P</td><td>P</td></tr>
+                      <tr><td><strong>DUEM</strong></td><td>P</td><td>U</td><td>P</td><td><span class="pill-data ok">X</span></td><td>U</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-block">
+                <h3><span class="pin">i</span>Commissioning Authority (CxA)</h3>
+                <ul>
+                  <li><b>Indépendance</b> — Tierce partie neutre, contrat direct avec le MOA.</li>
+                  <li><b>Expertise</b> — Maîtrise avancée des systèmes, maintenance et protocoles.</li>
+                  <li><b>Pilotage</b> — Coordinateur central : planning, objectifs, facilitation.</li>
+                  <li><b>Défense des intérêts</b> — Représentant technique du client tout au long du projet.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="ppt-footer">
+            <div class="crumb"><span class="badge">Commissioning</span><span>Acteurs &amp; RACI</span></div>
+            <div class="pg">06 / 37</div>
+          </div>
+          <div class="ppt-logo">ENEOR</div>
+        </div>
+      </div>
+
+      <!-- 5. PROCESS / TIMELINE -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 5 · Slide schéma — timeline / process <span class="ref">— PPT.05</span></div>
+        <p class="desc">Process horizontal avec étapes numérotées en bulles cyan, dernière étape en marine. Encart bleu pâle en pied pour le message-clé / point de vigilance.</p>
+        <div class="tpl-ppt">
+          <div class="ppt-header">
+            <h1>Démarche Cx en 5 phases</h1>
+            <h2>Vue d'ensemble du processus de Commissioning</h2>
+            <div class="dots-r"></div><div class="stripe"></div>
+          </div>
+          <div class="ppt-body">
+            <div class="process-row">
+              <div class="step"><div class="bub">01</div><div class="lab">Cadrage</div><div class="desc">Programme &amp; EPP, plan Cx v1</div></div>
+              <div class="step"><div class="bub">02</div><div class="lab">Conception</div><div class="desc">APS / APD / PRO / DCE</div></div>
+              <div class="step"><div class="bub">03</div><div class="lab">Réalisation</div><div class="desc">Études EXE, visites chantier</div></div>
+              <div class="step"><div class="bub">04</div><div class="lab">Mise en service</div><div class="desc">Essais fonctionnels &amp; OPR</div></div>
+              <div class="step"><div class="bub">05</div><div class="lab">Exploitation</div><div class="desc">GPA, suivi performance 24 mois</div></div>
+            </div>
+            <div class="timeline-msg">
+              <b>⚑ Rappel — engagement précoce</b>
+              <span>Plus l'engagement du Commissioning est précoce dans le projet, plus le coût des corrections est faible.</span>
+            </div>
+          </div>
+          <div class="ppt-footer">
+            <div class="crumb"><span class="badge">Commissioning</span><span>Démarche en 4 phases</span></div>
+            <div class="pg">07 / 37</div>
+          </div>
+          <div class="ppt-logo">ENEOR</div>
+        </div>
+      </div>
+
+      <!-- 6. TABLEAU DE DONNÉES -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 6 · Slide tableau — registre / Master List <span class="ref">— PPT.06</span></div>
+        <p class="desc">Tableau dense pour registres de mesures, bilans énergétiques. En-têtes marine en bandeau dégradé, lignes alternées, colonne ROI avec pills colorées.</p>
+        <div class="tpl-ppt">
+          <div class="ppt-header">
+            <h1>Phase 2 — Registre des mesures</h1>
+            <h2>Quick wins &amp; mesures à investissement modéré</h2>
+            <div class="dots-r"></div><div class="stripe"></div>
+          </div>
+          <div class="ppt-body">
+            <div class="data-block" style="margin-top:1cqw;">
+              <div class="data-head">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM3 11h18v4H3zM3 19h18"/></svg>
+                Master list — actions priorisées
+              </div>
+              <table class="data-table">
+                <thead><tr><th>Action d'optimisation</th><th>Lot</th><th>CAPEX (€)</th><th>Gain kWh/an</th><th>€/an</th><th>ROI</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Thermostats impulsionnels par bureau</strong></td><td>CVC</td><td class="num">1 500</td><td class="num">52 950</td><td class="num">4 501</td><td><span class="pill-data ok">&lt; 1 an</span></td></tr>
+                  <tr><td><strong>Ventilation nocturne — free cooling</strong></td><td>CVC</td><td class="num">0</td><td class="num">87 999</td><td class="num">7 479</td><td><span class="pill-data now">Immédiat</span></td></tr>
+                  <tr><td><strong>Loi d'eau réseau secondaire</strong></td><td>GTB</td><td class="num">1 475</td><td class="num">28 200</td><td class="num">2 400</td><td><span class="pill-data ok">&lt; 1 an</span></td></tr>
+                  <tr><td><strong>Sonde luminosité éclairage hall</strong></td><td>CFO</td><td class="num">1 500</td><td class="num">8 000</td><td class="num">680</td><td><span class="pill-data warn">≈ 2 ans</span></td></tr>
+                  <tr><td><strong>Coupure ventilo-convecteurs 12h-14h</strong></td><td>CVC</td><td class="num">0</td><td class="num">14 200</td><td class="num">1 207</td><td><span class="pill-data now">Immédiat</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="ppt-footer">
+            <div class="crumb"><span class="badge">Rétrocommissioning</span><span>Phase 2 · Registre</span></div>
+            <div class="pg">23 / 37</div>
+          </div>
+          <div class="ppt-logo">ENEOR</div>
+        </div>
+      </div>
+
+      <!-- 7. KPI / REX -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 7 · Slide KPI / REX — résultats &amp; chiffres-clés <span class="ref">— PPT.07</span></div>
+        <p class="desc">Cartes KPI en grille pour mettre en avant les chiffres-clés d'un retour d'expérience. Variantes marine (par défaut) et cyan pour les résultats remarquables.</p>
+        <div class="tpl-ppt">
+          <div class="ppt-header">
+            <h1>REX — Tour de bureaux Lyon Part-Dieu</h1>
+            <h2>Résultats après 24 mois de Rétrocommissioning</h2>
+            <div class="dots-r"></div><div class="stripe"></div>
+          </div>
+          <div class="ppt-body">
+            <div class="kpi-grid">
+              <div class="kpi cyan"><div class="lab">Gain énergie</div><div class="val">−28 %</div><div class="trend">vs base 2022</div></div>
+              <div class="kpi"><div class="lab">Sans investissement</div><div class="val">−11,9 %</div><div class="trend">Quick wins seuls</div></div>
+              <div class="kpi"><div class="lab">CAPEX total</div><div class="val">87 k€</div><div class="trend">ROI 2,8 ans</div></div>
+              <div class="kpi cyan"><div class="lab">CO₂ évité</div><div class="val">142 t</div><div class="trend">/ an</div></div>
+            </div>
+            <div class="extended">
+              <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/><path d="M9 12l2 2 4-4" stroke="currentColor" fill="none"/></svg></div>
+              <div>
+                <h5>Enseignement-clé</h5>
+                <p>La phase exploitation du Cx transforme l'analyse de données GTB en actions correctives concrètes et chiffrées, garantissant la performance réelle.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ppt-footer">
+            <div class="crumb"><span class="badge">REX</span><span>Phase Exploitation</span></div>
+            <div class="pg">31 / 37</div>
+          </div>
+          <div class="ppt-logo">ENEOR</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════ WORD — HI-FI ═══════ -->
+    <section class="sec" id="word">
+      <div class="sec-eyebrow">09 — Templates</div>
+      <h2>Word — gabarits rapport A4</h2>
+      <p class="lede">Système de 5 gabarits A4 portrait (210×297&nbsp;mm) en Montserrat. Marges 25&nbsp;mm haut/bas, 20&nbsp;mm gauche/droite. Interlignage 1.55. Pour rapports d'audit énergétique, comptes-rendus de Cx et notes techniques.</p>
+
+      <!-- Page de garde -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 1 · Page de garde <span class="ref">— W.01</span></div>
+        <p class="desc">Couverture corporate avec bandeau dégradé sur 48% de la hauteur. Bloc d'information du document détaché en carte blanche en partie basse.</p>
+        <div class="tpl-grid-1">
+          <div style="max-width: 460px; margin: 0 auto;">
+            <div class="tpl-word is-cover">
+              <div class="gradient-band"></div>
+              <div class="top-logo">ENEOR<span>Bureau d'études énergie</span></div>
+              <div class="doc-meta">
+                <div class="lab">Rapport · v1.0</div>
+                <div class="ref">RAP-2025-AUDIT-074</div>
+              </div>
+              <h1>Audit énergétique<br/>Bâtiment Tertiaire X</h1>
+              <div class="rule-w"></div>
+              <div class="subtitle">Diagnostic, mesures correctives et plan d'optimisation pluriannuel</div>
+              <div class="info-card">
+                <div><div class="lab">Maître d'ouvrage</div><div class="val">Foncière Lumière SAS</div><div class="sub">Direction Patrimoine &amp; Énergie</div></div>
+                <div><div class="lab">Site</div><div class="val">Lyon Part-Dieu</div><div class="sub">14 200 m² SU · R+8</div></div>
+                <div><div class="lab">Date d'émission</div><div class="val">15 mars 2025</div><div class="sub">Confidentiel · Diffusion limitée</div></div>
+              </div>
+              <div class="footer-strip"><span>Une marque <strong>du Groupe Acorus</strong></span><span>www.eneor.com</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sommaire -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 2 · Sommaire <span class="ref">— W.02</span></div>
+        <p class="desc">Sommaire à deux niveaux. Numérotation cyan tabulaire, liaison par pointillé, pagination droite alignée. Sous-niveaux indentés et plus discrets.</p>
+        <div class="tpl-grid-1">
+          <div style="max-width: 460px; margin: 0 auto;">
+            <div class="tpl-word is-toc">
+              <div class="header"><span><b>ENEOR</b> · Audit énergétique — Bâtiment X</span><span>Confidentiel</span></div>
+              <div class="body">
+                <div class="eyebrow">Document de référence</div>
+                <h2>Sommaire</h2>
+                <ul class="toc-list">
+                  <li><span class="num">01</span><span class="ttl">Synthèse exécutive</span><span class="dots"></span><span class="pg">04</span></li>
+                  <li><span class="num">02</span><span class="ttl">Périmètre &amp; méthodologie</span><span class="dots"></span><span class="pg">07</span></li>
+                  <li class="sub"><span class="num">2.1</span><span class="ttl">Cadre réglementaire</span><span class="dots"></span><span class="pg">08</span></li>
+                  <li class="sub"><span class="num">2.2</span><span class="ttl">Bâti étudié — caractéristiques</span><span class="dots"></span><span class="pg">10</span></li>
+                  <li><span class="num">03</span><span class="ttl">Diagnostic CVC</span><span class="dots"></span><span class="pg">14</span></li>
+                  <li class="sub"><span class="num">3.1</span><span class="ttl">Production chaud / froid</span><span class="dots"></span><span class="pg">15</span></li>
+                  <li class="sub"><span class="num">3.2</span><span class="ttl">Distribution &amp; émetteurs</span><span class="dots"></span><span class="pg">18</span></li>
+                  <li><span class="num">04</span><span class="ttl">Diagnostic GTB &amp; comptage</span><span class="dots"></span><span class="pg">22</span></li>
+                  <li><span class="num">05</span><span class="ttl">Plan d'actions priorisé</span><span class="dots"></span><span class="pg">28</span></li>
+                  <li><span class="num">06</span><span class="ttl">Annexes techniques</span><span class="dots"></span><span class="pg">35</span></li>
+                </ul>
+              </div>
+              <div class="footer"><span class="lg">ENEOR</span><span>p. 03 / 42</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page intérieure -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 3 · Page de chapitre &amp; corps de texte <span class="ref">— W.03</span></div>
+        <p class="desc">Page courante avec hiérarchie complète (H1 eyebrow cyan, H2 titre + barre cyan, H3 numéroté, H4 surligné). Encart « point clé » + figure illustrée.</p>
+        <div class="tpl-grid-1">
+          <div style="max-width: 460px; margin: 0 auto;">
+            <div class="tpl-word is-inner">
+              <div class="header"><span><b>ENEOR</b> · Audit énergétique — Bâtiment X</span><span>Chapitre 03</span></div>
+              <div class="body">
+                <h1>Chapitre 03</h1>
+                <h2>Diagnostic CVC</h2>
+                <p>L'analyse des installations CVC repose sur une campagne de mesures de 4 semaines en période de chauffe, complétée par l'exploitation des données GTB sur 18 mois glissants. Les écarts observés sont systématiquement croisés avec la simulation thermique dynamique.</p>
+
+                <h3><span class="num">1</span>Production de chaud</h3>
+                <p>La chaufferie est équipée de <strong>deux chaudières gaz à condensation</strong> de 350 kW unitaires, raccordées en cascade. Les courbes de retour réseau confirment une <strong>condensation effective sur 62 % du temps de fonctionnement</strong>.</p>
+
+                <div class="callout">
+                  <div class="lab">⚑ Point clé</div>
+                  <p>La consigne de température départ chaudière est figée à 75 °C en lieu et place d'une loi d'eau extérieure — perte de rendement estimée à 3,2 % par rapport à un fonctionnement glissant.</p>
+                </div>
+
+                <h4>Pilotage &amp; régulation</h4>
+                <ul class="bullets">
+                  <li>Régulation V3V terminale conforme, asservissement à la sonde extérieure désactivé.</li>
+                  <li>Programmation horaire respectée — réduit nuit fonctionnel mais excessif (16 °C).</li>
+                  <li>Aucune remontée d'alarme défaut brûleur sur les 12 derniers mois.</li>
+                </ul>
+
+                <div class="figure">
+                  <div class="placeholder">FIGURE 12 · Synoptique réseau primaire chaud</div>
+                  <div class="caption"><b>Fig. 12.</b>Schéma de principe du réseau primaire — production en cascade et distribution sur sous-stations.</div>
+                </div>
+
+                <h3><span class="num">2</span>Production de froid</h3>
+                <p>Le groupe froid principal présente un <strong>EER mesuré de 2,8</strong> contre 3,4 attendu sur sa fiche constructeur, traduisant un encrassement probable du condenseur à air.</p>
+              </div>
+              <div class="footer"><span class="lg">ENEOR</span><span>p. 14 / 42</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page tableau -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 4 · Page tableau — registre / plan d'actions <span class="ref">— W.04</span></div>
+        <p class="desc">Page dédiée à un grand tableau de données (master list, matrice RACI, registre des mesures). Lignes alternées cyan pâle, pills colorées pour les statuts, bandeau KPI synthétique en pied.</p>
+        <div class="tpl-grid-1">
+          <div style="max-width: 460px; margin: 0 auto;">
+            <div class="tpl-word is-table">
+              <div class="header"><span><b>ENEOR</b> · Audit énergétique — Bâtiment X</span><span>Chapitre 05</span></div>
+              <div class="body">
+                <h2>05 · Plan d'actions priorisé</h2>
+                <p class="lede">Actions classées par ROI croissant. La priorisation tient compte du CAPEX, du gain énergétique annuel et de l'impact sur le confort des occupants.</p>
+                <table class="data-table-w">
+                  <thead><tr><th>Action</th><th>Lot</th><th>CAPEX (€)</th><th>Gain kWh/an</th><th>€/an</th><th>ROI</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Loi d'eau extérieure chaufferie</strong></td><td>CVC</td><td class="num">0</td><td class="num">42 800</td><td class="num">3 638</td><td><span class="pill-w now">Immédiat</span></td></tr>
+                    <tr><td><strong>Optim. consignes ventilation nocturne</strong></td><td>CVC</td><td class="num">0</td><td class="num">28 100</td><td class="num">2 388</td><td><span class="pill-w now">Immédiat</span></td></tr>
+                    <tr><td><strong>Thermostats impulsionnels par zone</strong></td><td>CVC</td><td class="num">1 500</td><td class="num">52 950</td><td class="num">4 501</td><td><span class="pill-w ok">&lt; 1 an</span></td></tr>
+                    <tr><td><strong>Calorifugeage réseau ECS bouclé</strong></td><td>Plomb.</td><td class="num">2 200</td><td class="num">14 600</td><td class="num">1 241</td><td><span class="pill-w ok">&lt; 2 ans</span></td></tr>
+                    <tr><td><strong>Sonde luminosité éclairage hall</strong></td><td>CFO</td><td class="num">1 500</td><td class="num">8 000</td><td class="num">680</td><td><span class="pill-w warn">≈ 2 ans</span></td></tr>
+                    <tr><td><strong>Détartrage condenseur GF principal</strong></td><td>CVC</td><td class="num">3 800</td><td class="num">19 200</td><td class="num">1 632</td><td><span class="pill-w warn">≈ 2,5 ans</span></td></tr>
+                    <tr><td><strong>Remplacement luminaires DALI parking</strong></td><td>CFO</td><td class="num">28 500</td><td class="num">62 000</td><td class="num">5 270</td><td><span class="pill-w warn">5 ans</span></td></tr>
+                  </tbody>
+                </table>
+                <div class="summary-row">
+                  <div class="kpi"><div class="lab">CAPEX total</div><div class="val">37,5 k€</div></div>
+                  <div class="kpi"><div class="lab">Gain énergie</div><div class="val">227 MWh</div></div>
+                  <div class="kpi"><div class="lab">Gain financier</div><div class="val">19 350 €/an</div></div>
+                  <div class="kpi"><div class="lab">ROI moyen</div><div class="val">1,9 ans</div></div>
+                </div>
+              </div>
+              <div class="footer"><span class="lg">ENEOR</span><span>p. 28 / 42</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page annexe -->
+      <div class="tpl-block">
+        <div class="tpl-meta"><span class="dot"></span> Gabarit 5 · Page annexe — fiche technique &amp; glossaire <span class="ref">— W.05</span></div>
+        <p class="desc">Page d'annexe pour les caractéristiques techniques détaillées (fiches équipement, données contractuelles) et le glossaire/index. Densité d'information élevée, hiérarchie claire.</p>
+        <div class="tpl-grid-1">
+          <div style="max-width: 460px; margin: 0 auto;">
+            <div class="tpl-word is-annexe">
+              <div class="header"><span><b>ENEOR</b> · Audit énergétique — Bâtiment X</span><span>Annexes</span></div>
+              <div class="body">
+                <h2>Annexe A · Fiches équipements</h2>
+                <p class="lede">Caractéristiques techniques des principaux équipements thermiques et électriques du site, à date du 15 mars 2025.</p>
+                <div class="annexe-grid">
+                  <div class="ann-card">
+                    <h3>Chaudière n°1</h3>
+                    <dl>
+                      <dt>Marque / modèle</dt><dd>Viessmann Vitocrossal 300</dd>
+                      <dt>Puissance utile</dt><dd>350 kW</dd>
+                      <dt>Année de mise en service</dt><dd>2018</dd>
+                      <dt>Rendement PCI</dt><dd>97,8 %</dd>
+                      <dt>Combustible</dt><dd>Gaz naturel</dd>
+                    </dl>
+                  </div>
+                  <div class="ann-card">
+                    <h3>Groupe froid principal</h3>
+                    <dl>
+                      <dt>Marque / modèle</dt><dd>Trane RTAC 240</dd>
+                      <dt>Puissance frigorifique</dt><dd>820 kW</dd>
+                      <dt>Année de mise en service</dt><dd>2015</dd>
+                      <dt>EER mesuré</dt><dd>2,8</dd>
+                      <dt>Fluide frigorigène</dt><dd>R134a — 92 kg</dd>
+                    </dl>
+                  </div>
+                  <div class="ann-card">
+                    <h3>CTA bureaux R+1 à R+8</h3>
+                    <dl>
+                      <dt>Débit nominal</dt><dd>28 000 m³/h</dd>
+                      <dt>Récupération chaleur</dt><dd>Échangeur rotatif 78 %</dd>
+                      <dt>Régulation soufflage</dt><dd>Cascade T° / CO₂</dd>
+                      <dt>Filtration</dt><dd>F7 + F9</dd>
+                    </dl>
+                  </div>
+                  <div class="ann-card">
+                    <h3>GTB / supervision</h3>
+                    <dl>
+                      <dt>Marque</dt><dd>Schneider EBO</dd>
+                      <dt>Nombre de points</dt><dd>1 240 (BACnet/IP)</dd>
+                      <dt>Compteurs énergie</dt><dd>32 sous-comptages</dd>
+                      <dt>Historisation</dt><dd>5 ans glissants</dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="glossary">
+                  <h3>Glossaire</h3>
+                  <ul class="gl-list">
+                    <li><b>Cx</b><span>Commissioning — démarche d'assurance qualité</span></li>
+                    <li><b>RCx</b><span>Rétrocommissioning sur bâtiment existant</span></li>
+                    <li><b>EPP</b><span>Exigences propriétaire (OPR)</span></li>
+                    <li><b>GTB</b><span>Gestion technique du bâtiment</span></li>
+                    <li><b>DUEM</b><span>Dossier d'utilisation, exploitation et maintenance</span></li>
+                    <li><b>EER</b><span>Energy Efficiency Ratio — froid</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="footer"><span class="lg">ENEOR</span><span>p. 35 / 42</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- ═══════ EXCEL ═══════ -->
+    <section class="sec" id="excel">
+      <div class="sec-eyebrow">10 — Templates</div>
+      <h2>Excel — tableaux formatés</h2>
+      <p class="lede">Modèle pour Master List et bilans énergétiques. En-têtes marine en majuscules, lignes alternées bleu pâle, valeurs numériques alignées à droite, tags colorés pour ROI / niveau. Cadre fenêtré pour fixer en-têtes au scroll.</p>
+
+      <div class="excel">
+        <div class="excel-toolbar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span style="margin-left: 8px;">Master_List_Cx_2026.xlsx</span>
+          <span style="margin-left: auto;">Σ · % · €</span>
+        </div>
+        <table class="xtable">
+          <thead>
+            <tr>
+              <th>Action d'optimisation</th>
+              <th>Lot</th>
+              <th>Niveau</th>
+              <th style="text-align: right;">CAPEX (€)</th>
+              <th style="text-align: right;">Gain (kWhEF/an)</th>
+              <th style="text-align: right;">Économie (€/an)</th>
+              <th>ROI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Thermostats impulsionnels (Reset nuit VC)</td><td>CVC</td><td><span class="tag ok">3</span></td><td style="text-align:right;">1 500</td><td style="text-align:right;">52 950</td><td style="text-align:right;" class="pos">4 501</td><td><span class="tag ok">&lt; 1 an</span></td></tr>
+            <tr><td>Ventilation nocturne CTA bureaux (×3 lots)</td><td>CVC</td><td><span class="tag ok">3</span></td><td style="text-align:right;">0</td><td style="text-align:right;">87 999</td><td style="text-align:right;" class="pos">7 479</td><td><span class="tag">Immédiat</span></td></tr>
+            <tr><td>Loi d'eau réseau secondaire Eau Glacée</td><td>CVC</td><td><span class="tag ok">3</span></td><td style="text-align:right;">1 475</td><td style="text-align:right;">28 200</td><td style="text-align:right;" class="pos">2 400</td><td><span class="tag ok">&lt; 1 an</span></td></tr>
+            <tr><td>T° évaporation variable Groupes Froids</td><td>CVC</td><td><span class="tag warn">2</span></td><td style="text-align:right;">3 000</td><td style="text-align:right;">49 400</td><td style="text-align:right;" class="pos">4 200</td><td><span class="tag ok">&lt; 1 an</span></td></tr>
+            <tr><td>Sonde luminosité éclairage hall</td><td>ECL</td><td><span class="tag warn">2</span></td><td style="text-align:right;">1 500</td><td style="text-align:right;">8 000</td><td style="text-align:right;" class="pos">680</td><td><span class="tag warn">1 an</span></td></tr>
+            <tr><td>Optimisation tarifaire (Puissance souscrite)</td><td>ELE</td><td><span class="tag ok">3</span></td><td style="text-align:right;">0</td><td style="text-align:right;">—</td><td style="text-align:right;" class="pos">1 800</td><td><span class="tag">Immédiat</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink-700); margin: 18px 0 0;">→ Mise en forme conditionnelle : valeurs &lt; 0 en rouge, ≥ ROI cible en vert. Format chiffres FR : espace insécable comme séparateur de milliers, "€" suffixé.</p>
+    </section>
+
+    <!-- ═══════ WEB & APP ═══════ -->
+    <section class="sec" id="web">
+      <div class="sec-eyebrow">11 — Digital</div>
+      <h2>Web &amp; application</h2>
+      <p class="lede">Le système est natif du web : tokens directement utilisables en CSS. Mocks ci-dessous : page d'accueil corporate + dashboard client (suivi de performance).</p>
+
+      <!-- Web mock 1 - Landing -->
+      <div class="web-mock" style="margin-bottom: 24px;">
+        <div class="web-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <div class="url">https://eneor.fr</div>
+        </div>
+        <div class="web-body">
+          <div class="web-nav">
+            <div class="logo">ENEOR</div>
+            <ul>
+              <li>Métiers</li><li>Références</li><li>À propos</li><li>Carrières</li>
+              <li><button class="btn btn-cyan" style="padding: 8px 16px;">Nous contacter</button></li>
+            </ul>
+          </div>
+          <div class="web-hero">
+            <h2>Optimisez la <em>performance énergétique</em> de vos bâtiments.</h2>
+            <p>Bureau d'études spécialisé en commissioning, audit énergétique et suivi de performance. Pour maîtres d'ouvrage, industriels et collectivités.</p>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary">Démarrer un projet</button>
+              <button class="btn btn-ghost">Découvrir nos métiers</button>
+            </div>
+          </div>
+          <div class="web-cards">
+            <div class="web-card"><div class="num">+15%</div><div class="lab">Économie d'énergie moyenne</div></div>
+            <div class="web-card"><div class="num">200+</div><div class="lab">Bâtiments commissionnés</div></div>
+            <div class="web-card"><div class="num">&lt; 1 an</div><div class="lab">ROI moyen sur les actions prioritaires</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web mock 2 - Dashboard -->
+      <div class="web-mock">
+        <div class="web-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <div class="url">app.eneor.fr/projets/audit-2026/dashboard</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 200px 1fr; min-height: 360px;">
+          <div style="background: var(--cv-navy-900); padding: 22px 16px;">
+            <div style="font-weight: 800; color: white; font-size: 16px; margin-bottom: 24px;">ENEOR</div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="padding: 8px 10px; border-radius: 6px; background: rgba(255,255,255,.08); color: white; font-size: 12.5px;">Tableau de bord</div>
+              <div style="padding: 8px 10px; color: rgba(255,255,255,.7); font-size: 12.5px;">Master List</div>
+              <div style="padding: 8px 10px; color: rgba(255,255,255,.7); font-size: 12.5px;">Mesures</div>
+              <div style="padding: 8px 10px; color: rgba(255,255,255,.7); font-size: 12.5px;">Rapports</div>
+              <div style="padding: 8px 10px; color: rgba(255,255,255,.7); font-size: 12.5px;">Équipe</div>
+            </div>
+          </div>
+          <div style="padding: 24px 28px; background: var(--paper-2);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px;">
+              <div>
+                <div style="font-size: 11px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .1em;">Projet · Bâtiment X</div>
+                <div style="font-size: 22px; font-weight: 700; color: var(--cv-navy-900);">Audit énergétique 2026</div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <span class="pill success">3 actions prio</span>
+                <span class="pill warn">2 à valider</span>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px;">
+              <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 10px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">Économie/an</div>
+                <div style="font-size: 22px; font-weight: 700; color: var(--cv-navy-900); margin-top: 4px;">21 060 €</div>
+                <div style="font-size: 11px; color: var(--sem-success); font-weight: 600;">↑ 12.4%</div>
+              </div>
+              <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 10px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">Gain kWh</div>
+                <div style="font-size: 22px; font-weight: 700; color: var(--cv-navy-900); margin-top: 4px;">226 549</div>
+                <div style="font-size: 11px; color: var(--sem-success); font-weight: 600;">↑ 8.1%</div>
+              </div>
+              <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 10px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">CAPEX</div>
+                <div style="font-size: 22px; font-weight: 700; color: var(--cv-navy-900); margin-top: 4px;">7 475 €</div>
+                <div style="font-size: 11px; color: var(--ink-500); font-weight: 600;">→ stable</div>
+              </div>
+              <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 10px; color: var(--ink-500); text-transform: uppercase; letter-spacing: .08em;">ROI moyen</div>
+                <div style="font-size: 22px; font-weight: 700; color: var(--cv-cyan-500); margin-top: 4px;">&lt; 1 an</div>
+                <div style="font-size: 11px; color: var(--sem-success); font-weight: 600;">↑ excellent</div>
+              </div>
+            </div>
+            <div style="background: var(--paper); border: 1px solid var(--ink-100); border-radius: 10px; padding: 18px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--cv-navy-900);">Consommation 12 derniers mois</div>
+                <div style="font-size: 11px; color: var(--ink-500);">kWh/mois</div>
+              </div>
+              <div style="height: 90px; display: flex; align-items: flex-end; gap: 4px;">
+                <div style="flex:1; height: 50%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 65%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 80%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 70%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 55%; background: var(--cv-cyan-500); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 40%; background: var(--cv-cyan-500); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 35%; background: var(--cv-cyan-500); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 38%; background: var(--cv-cyan-500); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 45%; background: var(--cv-cyan-500); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 60%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 75%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+                <div style="flex:1; height: 70%; background: var(--cv-navy-700); border-radius: 2px 2px 0 0;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="doc-footer">
+      <div class="row">
+        <div>
+          <h5>Charte graphique ENEOR</h5>
+          <p>Document évolutif. Toute modification doit être validée par la direction et tracée en versioning.</p>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <p>Pour toute question, exemple complémentaire ou demande de fichiers source (.AI, .PSD, .PPTX), contacter le pôle communication.</p>
+        </div>
+        <div>
+          <h5>Versions</h5>
+          <p>v1.0 — Mai 2026 · Première édition (2 directions à arbitrer).</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "mood": "corporate",
+  "surface": "soft",
+  "accent": 50
+}/*EDITMODE-END*/;
+
+const MOOD_PRESETS = {
+  editorial: {
+    '--tw-density-pad': '1.3',
+    '--tw-display-weight': '300',
+    '--tw-display-track': '-0.04em',
+    '--tw-eyebrow-track': '0.14em',
+  },
+  corporate: {
+    '--tw-density-pad': '1',
+    '--tw-display-weight': '700',
+    '--tw-display-track': '-0.015em',
+    '--tw-eyebrow-track': '0.14em',
+  },
+  tech: {
+    '--tw-density-pad': '0.82',
+    '--tw-display-weight': '800',
+    '--tw-display-track': '-0.025em',
+    '--tw-eyebrow-track': '0.22em',
+  },
+};
+
+const SURFACE_PRESETS = {
+  flat: {
+    '--tw-radius-mult': '0.25',
+    '--tw-shadow-strength': '0',
+    '--tw-border-strength': '1.4',
+    '--tw-surface-fill': 'var(--paper)',
+    '--tw-surface-blur': '0px',
+  },
+  soft: {
+    '--tw-radius-mult': '1',
+    '--tw-shadow-strength': '1',
+    '--tw-border-strength': '1',
+    '--tw-surface-fill': 'var(--paper)',
+    '--tw-surface-blur': '0px',
+  },
+  glassy: {
+    '--tw-radius-mult': '1.6',
+    '--tw-shadow-strength': '1.8',
+    '--tw-border-strength': '0.4',
+    '--tw-surface-fill': 'rgba(255,255,255,0.55)',
+    '--tw-surface-blur': '14px',
+  },
+};
+
+function applyTweaks(t){
+  const root = document.documentElement;
+  // mood
+  const m = MOOD_PRESETS[t.mood] || MOOD_PRESETS.corporate;
+  for (const k in m) root.style.setProperty(k, m[k]);
+  document.body.classList.remove('mood-editorial','mood-corporate','mood-tech');
+  document.body.classList.add('mood-' + t.mood);
+  // surface
+  const s = SURFACE_PRESETS[t.surface] || SURFACE_PRESETS.soft;
+  for (const k in s) root.style.setProperty(k, s[k]);
+  document.body.classList.remove('surface-flat','surface-soft','surface-glassy');
+  document.body.classList.add('surface-' + t.surface);
+  // accent: 0..100 → chroma 0.03..0.20, lightness 0.78..0.55, hue stays close to teal but shifts
+  const a = Math.max(0, Math.min(100, t.accent)) / 100;
+  const chroma = (0.03 + a * 0.17).toFixed(3);
+  const light  = (0.78 - a * 0.23).toFixed(3);
+  const hue    = (185 - a * 12).toFixed(1); // teal → cyan
+  root.style.setProperty('--tw-cyan-c', chroma);
+  root.style.setProperty('--tw-cyan-l', light);
+  root.style.setProperty('--tw-cyan-h', hue);
+}
+
+function App(){
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => { applyTweaks(t); }, [t]);
+
+  return (
+    <TweaksPanel title="Tweaks · Feel">
+      <TweakSection label="Mood" />
+      <TweakRadio
+        label="Ton éditorial"
+        value={t.mood}
+        options={[
+          {value: 'editorial', label: 'Éditorial'},
+          {value: 'corporate', label: 'Corporate'},
+          {value: 'tech', label: 'Tech'},
+        ]}
+        onChange={(v) => setTweak('mood', v)}
+      />
+
+      <TweakSection label="Surface" />
+      <TweakRadio
+        label="Traitement des cartes"
+        value={t.surface}
+        options={[
+          {value: 'flat', label: 'Plate'},
+          {value: 'soft', label: 'Douce'},
+          {value: 'glassy', label: 'Vitrée'},
+        ]}
+        onChange={(v) => setTweak('surface', v)}
+      />
+
+      <TweakSection label="Accent" />
+      <TweakSlider
+        label="Intensité du cyan"
+        value={t.accent}
+        min={0} max={100} step={1} unit="%"
+        onChange={(v) => setTweak('accent', v)}
+      />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+<script>
+  // Direction toggle
+  function setDir(d){
+    document.body.classList.remove('dir-conservative', 'dir-modern');
+    document.body.classList.add('dir-' + d);
+    document.getElementById('btn-cv').classList.toggle('on', d === 'conservative');
+    document.getElementById('btn-md').classList.toggle('on', d === 'modern');
+    document.getElementById('dirName').textContent =
+      d === 'conservative' ? "Conservatrice — fidèle à l'existant" : "Moderne — plus tranchée et tech";
+    syncHexCodes();
+  }
+
+  // Sync hex codes in palette swatches with current direction
+  function syncHexCodes(){
+    const cs = getComputedStyle(document.body);
+    const fmt = (v) => {
+      v = v.trim();
+      return `HEX ${v.toUpperCase()}`;
+    };
+    const set = (cls, varName) => {
+      const el = document.querySelector('.' + cls);
+      if (el) el.textContent = fmt(cs.getPropertyValue(varName));
+    };
+    set('hex-navy', '--cv-navy-900');
+    set('hex-navy7', '--cv-navy-700');
+    set('hex-cyan', '--cv-cyan-500');
+    set('hex-sky', '--cv-sky-100');
+    set('hex-success', '--sem-success');
+    set('hex-warn', '--sem-warning');
+    set('hex-danger', '--sem-danger');
+    set('hex-neut', '--sem-neutral');
+  }
+  syncHexCodes();
+
+  // Active section in nav
+  const links = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section.sec, footer.doc-footer');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        const id = e.target.id;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('data-sec') === id));
+      }
+    });
+  }, {rootMargin: '-30% 0px -60% 0px'});
+  sections.forEach(s => obs.observe(s));
+</script>
+
+<style id="hide-wireframe-font-rules">
+  body.hide-wireframe-font .ppt .scribble,
+  body.hide-wireframe-font .word-page [style*="Caveat"],
+  body.hide-wireframe-font .ppt [style*="Caveat"],
+  body.hide-wireframe-font .wire-block h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+  }
+</style>
+
+</body>
+</html>
